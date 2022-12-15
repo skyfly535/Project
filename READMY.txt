@@ -1,0 +1,23 @@
+Проектная работа.
+
+Для настройки системы необходимо 2 сервера с ОС CentOS 7 с статическими IP адресами (192.168.152.153 - Master сервре, 192.168.152.155 - Slave сервер).
+
+На Master сервре выполняется скрипт LAMP.sh, который устанавливает и настраивает следующие программные компоненты:
+- Apache;
+- CMS Joomla;
+- MySQL (master);
+- NGINX (на порту 80 прописан proxy_pass на upstream);
+- Prometheus;
+- node_exporter;
+- Grafana;
+- Filebeat (для сбора данных из логов NGINX).
+
+На Slave сервре выполняется скрипт LAMP2.sh, который устанавливает и настраивает следующие программные компоненты:
+- Apache;
+- MySQL (master);
+- ELK стек (Elasticsearch, Logstash, Kibana);
+- node_exporter (сбор данных для Prometheus на Master сервре).
+
+Для работы скриптов необходит доступ к репозиторию GitHub https://github.com/skyfly535/Project.git.
+
+Cкрипт для бэкапа БД со slave сервера (потаблично с указанием позиции бинлога) - dampSQL.sh
